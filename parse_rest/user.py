@@ -59,6 +59,7 @@ class User(ParseResource):
         session_header = {'X-Parse-Session-Token': self.sessionToken}
         url = self._absolute_url
         data = self._to_native()
+        print data
 
         response = User.PUT(url, extra_headers=session_header, batch=batch, **data)
 
