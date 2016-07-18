@@ -99,6 +99,8 @@ class User(ParseResource):
     def current_user(cls):
         user_url = '/'.join([API_ROOT, 'users/me'])
         response_data = User.GET(user_url)
+        del response_data['__type']
+        del response_data['className']
         print "Current User Response:{}".format(response_data)
         return cls(**response_data)
 
