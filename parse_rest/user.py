@@ -108,10 +108,6 @@ class User(ParseResource):
         except ParseError:
             return False
 
-    def _to_native(self):
-        return dict([(k, ParseType.convert_to_parse(v, as_pointer=True))
-                     for k, v in self._editable_attrs.items()])
-
     @property
     def className(self):
         return '_User'
