@@ -113,7 +113,7 @@ class User(ParseResource):
                      for k, v in self._editable_attrs.items()])
 
     @property
-    def className(self):
+    def _className(self):
         return '_User'
 
     def __repr__(self):

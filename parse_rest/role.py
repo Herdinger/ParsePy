@@ -25,7 +25,7 @@ class Role(Object):
     ENDPOINT_ROOT = '/'.join([API_ROOT, 'roles'])
 
     @property
-    def className(self):
+    def _className(self):
         return '_Role'
 
     def __repr__(self):
