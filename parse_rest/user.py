@@ -80,12 +80,15 @@ class User(ParseResource):
     def signup(cls, username, password, **kw):
         response_data = User.POST('', username=username, password=password, **kw)
         response_data.update({'username': username})
+        print "Signup Response:{}".format(response_data)
         return cls(**response_data)
 
     @classmethod
     def login(cls, username, passwd):
         login_url = '/'.join([API_ROOT, 'login'])
-        return cls(**User.GET(login_url, username=username, password=passwd))
+        response_data = User.GET(login_url, username=username, password=passwd)
+        print "Login Response:{}".format(response_data)
+        return cls(**response_data)
 
     @classmethod
     def login_auth(cls, auth):
@@ -95,7 +98,9 @@ class User(ParseResource):
     @classmethod
     def current_user(cls):
         user_url = '/'.join([API_ROOT, 'users/me'])
-        return cls(**User.GET(user_url))
+        response_data = User.GET(user_url)
+        print "Current User Response:{}".format(response_data)
+        return cls(**response_data)
 
     @staticmethod
     def request_password_reset(email):
