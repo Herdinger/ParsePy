@@ -455,8 +455,8 @@ class Object(six.with_metaclass(ObjectMetaclass, ParseResource)):
                 'amount': amount
                 }
             }
-        self.__class__.PUT(self._absolute_url, **payload)
-        self.__dict__[key] += amount
+        result = self.__class__.PUT(self._absolute_url, **payload)
+        self.__dict__[key] = result[key]
 
     def remove(self, key):
         """
